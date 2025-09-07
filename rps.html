@@ -10,15 +10,16 @@
     <button onclick="playgame('Rock');">Rock</button>
     <button onclick="playgame('Paper');">Paper</button>
     <button onclick="playgame('Scissors');">Scissors</button>
-
-    <button>Reset Score</button>
+    <button
+      onclick="
+    score.wins=0; 
+    score.looses=0; 
+    score.ties=0;"
+    >
+      Reset Score
+    </button>
     <script>
-      const score = {
-        wins: 0,
-        looses: 0,
-        ties: 0,
-      };
-
+      const score = JSON.parse(localStorage.getItem("score"));
       function playgame(playerChoice) {
         const computerChoice = pickComputerChoice();
         let result = "";
@@ -60,6 +61,8 @@
         } else if (result === "Its a tie!") {
           score.ties = score.ties + 1;
         }
+
+        localStorage.setItem("score", JSON.stringify(score));
 
         alert(
           `You Chose ${playerChoice} and Computer Chose ${computerChoice}. ${result}

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      const product = {
+        name: "Laptop",
+        price: 30000,
+        available: true,
+        details: {
+          model: "ASUS",
+          year: 2023,
+        },
+      };
+
+      console.log(product);
+      console.log(JSON.stringify(product));
+      const json = JSON.stringify(product);
+      console.log(JSON.parse(json));
+    </script>
+  </body>
+</html>
