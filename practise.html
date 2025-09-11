@@ -5,22 +5,72 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
   </head>
+  <style>
+    .button1 {
+      border-radius: 16px;
+      font: arial;
+      font-weight: bold;
+      border: none;
+      color: white;
+      padding-left: 8px;
+      padding-bottom: 8px;
+      padding-top: 8px;
+      padding-right: 8px;
+      background-color: black;
+    }
+  </style>
   <body>
+    <p>YouTube Subscribe Button</p>
+    <button class="button1" onclick="Subscribe()">Subscribe</button>
+    <br />
+    <p>Rock Paper Scissors</p>
+    <a href="rps.html">Click Here</a>
+    <p>Amazon Shipping Calculator</p>
+    <p>Orders Under $40 = +$10 shipping</p>
+    <p>Orders over $40 = FREE Shipping</p>
+    <input
+      onkeyDown="handleCostKeydown()"
+      placeholder="cost of order"
+      class="input1"
+    />
+    <button onclick="ordersPrice()">Calculate</button>
+    <p class="js-cost"></p>
+    <p class="js-total"></p>
+    <br />
+    <br />
+    <a href="ROCK PAPER SCISSORS.HTML">CSS version of these projects</a>
     <script>
-      const product = {
-        name: "Laptop",
-        price: 30000,
-        available: true,
-        details: {
-          model: "ASUS",
-          year: 2023,
-        },
-      };
+      function Subscribe() {
+        const buttonElement = document.querySelector(".button1");
+        if (buttonElement.innerText === "Subscribe") {
+          buttonElement.innerText = "Subscribed";
+        } else if (buttonElement.innerText === "Subscribed") {
+          buttonElement.innerText = "Subscribe";
+        }
+      }
 
-      console.log(product);
-      console.log(JSON.stringify(product));
-      const json = JSON.stringify(product);
-      console.log(JSON.parse(json));
+      function handleCostKeydown() {
+        if (event.key === "Enter") {
+          ordersPrice();
+        }
+      }
+
+      function ordersPrice() {
+        const inputElement = document.querySelector(".input1");
+        let orderCost = Number(inputElement.value);
+        let shippingCost = 10;
+        if (orderCost <= 40) {
+          orderCost = orderCost + shippingCost;
+          document.querySelector(
+            ".js-total"
+          ).innerHTML = `your total is $${orderCost}`;
+        } else if (orderCost > 40) {
+          orderCost = orderCost;
+          document.querySelector(
+            ".js-total"
+          ).innerHTML = `your total is $${orderCost}`;
+        }
+      }
     </script>
   </body>
 </html>
